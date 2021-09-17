@@ -12,7 +12,7 @@ export const anime = css`
   background: #ccc;
 `;
 
-const Section = (props: { title: string }) => {
+export const Section = (props: { title: string }, { children }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(ref, {});
   const isVisible = !!entry?.isIntersecting;
@@ -30,19 +30,20 @@ const Section = (props: { title: string }) => {
       }}
     >
       <div style={{ margin: "auto" }}>
-        {props.title}
+        {/* {props.title} */}
         {/* <p>{isVisible ? "Open" : "Clone"}</p> */}
       </div>
+      {children}
     </div>
   );
 };
 
-export default function Component() {
-  return (
-    <>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Section key={index + 1} title={`${index + 1}`} />
-      ))}
-    </>
-  );
-}
+// export default function Component() {
+//   return (
+//     <>
+//       {Array.from({ length: 5 }).map((_, index) => (
+//         <Section key={index + 1} title={`${index + 1}`} />
+//       ))}
+//     </>
+//   );
+// }
